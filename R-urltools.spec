@@ -4,7 +4,7 @@
 #
 Name     : R-urltools
 Version  : 1.7.2
-Release  : 7
+Release  : 8
 URL      : https://cran.r-project.org/src/contrib/urltools_1.7.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/urltools_1.7.2.tar.gz
 Summary  : Vectorised Tools for URL Handling and Parsing
