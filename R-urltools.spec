@@ -4,18 +4,16 @@
 #
 Name     : R-urltools
 Version  : 1.7.2
-Release  : 9
+Release  : 10
 URL      : https://cran.r-project.org/src/contrib/urltools_1.7.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/urltools_1.7.2.tar.gz
 Summary  : Vectorised Tools for URL Handling and Parsing
 Group    : Development/Tools
 License  : MIT
 Requires: R-urltools-lib = %{version}-%{release}
-Requires: R-Rcpp
-Requires: R-httr
-Requires: R-rlang
-Requires: R-triebeard
+Requires: R-cli
 BuildRequires : R-Rcpp
+BuildRequires : R-cli
 BuildRequires : R-httr
 BuildRequires : R-rlang
 BuildRequires : R-triebeard
@@ -44,10 +42,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549308206
+export SOURCE_DATE_EPOCH=1552841467
 
 %install
-export SOURCE_DATE_EPOCH=1549308206
+export SOURCE_DATE_EPOCH=1552841467
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -83,8 +81,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library urltools|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  urltools || :
 
 
 %files
@@ -119,7 +116,15 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/urltools/help/urltools.rdx
 /usr/lib64/R/library/urltools/html/00Index.html
 /usr/lib64/R/library/urltools/html/R.css
-/usr/lib64/R/library/urltools/libs/symbols.rds
+/usr/lib64/R/library/urltools/tests/testthat.R
+/usr/lib64/R/library/urltools/tests/testthat/test_credentials.R
+/usr/lib64/R/library/urltools/tests/testthat/test_encoding.R
+/usr/lib64/R/library/urltools/tests/testthat/test_get_set.R
+/usr/lib64/R/library/urltools/tests/testthat/test_memory.R
+/usr/lib64/R/library/urltools/tests/testthat/test_parameters.R
+/usr/lib64/R/library/urltools/tests/testthat/test_parsing.R
+/usr/lib64/R/library/urltools/tests/testthat/test_puny.R
+/usr/lib64/R/library/urltools/tests/testthat/test_suffixes.R
 
 %files lib
 %defattr(-,root,root,-)

@@ -1,2 +1,5 @@
 # This file contains recursive sources that require this package
 R-crul
+R-natserv
+R-wikitaxa
+R-worrms
