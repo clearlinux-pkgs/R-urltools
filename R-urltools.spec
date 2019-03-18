@@ -4,14 +4,13 @@
 #
 Name     : R-urltools
 Version  : 1.7.2
-Release  : 11
+Release  : 12
 URL      : https://cran.r-project.org/src/contrib/urltools_1.7.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/urltools_1.7.2.tar.gz
 Summary  : Vectorised Tools for URL Handling and Parsing
 Group    : Development/Tools
 License  : MIT
 Requires: R-urltools-lib = %{version}-%{release}
-Requires: R-cli
 BuildRequires : R-Rcpp
 BuildRequires : R-cli
 BuildRequires : R-httr
@@ -42,10 +41,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552841467
+export SOURCE_DATE_EPOCH=1552923690
 
 %install
-export SOURCE_DATE_EPOCH=1552841467
+export SOURCE_DATE_EPOCH=1552923690
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
