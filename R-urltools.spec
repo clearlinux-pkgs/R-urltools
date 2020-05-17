@@ -4,7 +4,7 @@
 #
 Name     : R-urltools
 Version  : 1.7.3
-Release  : 19
+Release  : 20
 URL      : https://cran.r-project.org/src/contrib/urltools_1.7.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/urltools_1.7.3.tar.gz
 Summary  : Vectorised Tools for URL Handling and Parsing
@@ -12,19 +12,17 @@ Group    : Development/Tools
 License  : MIT
 Requires: R-urltools-lib = %{version}-%{release}
 Requires: R-Rcpp
-Requires: R-httr
 Requires: R-triebeard
 BuildRequires : R-Rcpp
-BuildRequires : R-httr
 BuildRequires : R-triebeard
 BuildRequires : buildreq-R
 
 %description
-## urltools
-A package for elegantly handling and parsing URLs from within R.
-__Author:__ Oliver Keyes, Jay Jacobs<br/>
-__License:__ [MIT](http://opensource.org/licenses/MIT)<br/>
-__Status:__ Stable
+parsing, parameter extraction and modification. All functions are
+    designed to be both fast and entirely vectorised. It is intended to be
+    useful for people dealing with web-related datasets, such as server-side
+    logs, although may be useful for other situations involving large sets of
+    URLs.
 
 %package lib
 Summary: lib components for the R-urltools package.
@@ -36,21 +34,22 @@ lib components for the R-urltools package.
 
 %prep
 %setup -q -c -n urltools
+cd %{_builddir}/urltools
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1555300086
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1589759911
 
 %install
-export SOURCE_DATE_EPOCH=1555300086
+export SOURCE_DATE_EPOCH=1589759911
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -76,7 +75,7 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
