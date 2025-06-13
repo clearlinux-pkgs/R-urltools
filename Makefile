@@ -1,5 +1,5 @@
 PKG_NAME := R-urltools
-URL = https://cran.r-project.org/src/contrib/urltools_1.7.3.tar.gz
+URL = https://ftp.osuosl.org/pub/cran/src/contrib/urltools_1.7.3.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
